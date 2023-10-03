@@ -20,7 +20,7 @@ mod tests {
 
   #[test]
   fn test_range_popcnt() {
-    for range_max in 1..64 {
+    for range_max in 1..512 {
       for range_min in 0..range_max {
         assert_eq!(
           range_popcnt(range_min, range_max),
