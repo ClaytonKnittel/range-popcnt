@@ -1,5 +1,4 @@
-/// Returns the minumum/maximum value of x.count_ones() for x in range_min..range_max.
-
+/// Returns the maximum value of x.count_ones() for x in range_min..range_max.
 pub fn range_popcnt_max(range_min: u8, range_max: u8) -> u32 {
   debug_assert!(range_min < range_max);
   let different_bits = range_min ^ range_max;
@@ -8,6 +7,7 @@ pub fn range_popcnt_max(range_min: u8, range_max: u8) -> u32 {
   return (y | range_min).count_ones();
 }
 
+/// Returns the minimum value of x.count_ones() for x in range_min..range_max.
 pub fn range_popcnt_min(range_min: u8, range_max: u8) -> u32 {
   debug_assert!(range_min < range_max);
   if range_min == 0 {
@@ -16,6 +16,7 @@ pub fn range_popcnt_min(range_min: u8, range_max: u8) -> u32 {
   return 8 - range_popcnt_max(range_max.wrapping_neg(), range_min.wrapping_neg());
 }
 
+/// Returns the minimum/maximum value of x.count_ones() for x in range_min..range_max.
 pub fn range_popcnt(range_min: u8, range_max: u8) -> (u32, u32) {
   return (
     range_popcnt_min(range_min, range_max),
